@@ -1,0 +1,20 @@
+- name: comments_app
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://postgres:postgrespassword@postgres:5432/postgres
+      isolation_level: read-committed
+      use_prepared_statements: false
+  customization:
+    naming_convention: hasura-default
+  tables: "!include comments_app/tables/tables.yaml"
+- name: realtime_voting
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://postgres:postgrespassword@postgres:5432/postgres
+      isolation_level: read-committed
+      use_prepared_statements: false
+  customization:
+    naming_convention: hasura-default
+  tables: "!include realtime_voting/tables/tables.yaml"
