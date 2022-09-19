@@ -1,7 +1,27 @@
-import React from 'react';
+import { useSubscription } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import { QUESTIONS_SUBSCRIPTION } from './queries';
+
+import Loading from '../../components/Loading';
 
 function Questions() {
-  return <div>Questions</div>;
+  const { loading, data } = useSubscription(QUESTIONS_SUBSCRIPTION);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  console.log(data);
+
+  return (
+    <div>
+      {data.questions.map((question) => (
+        <div key={question.id}>
+          <Link to={`/question/${question.id}`}>{question.title}</Link>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default Questions;
