@@ -1,0 +1,18 @@
+.optionTitle {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.progressBar {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.voteBtn {
+  margin-left: 5px
+}
+
+.voteCount {
+  font-size: 16px;
+  margin-left: 5px;
+}

@@ -1,0 +1,17 @@
+.questionInput {
+    margin: 5px 0;
+    padding: 6px;
+    font-size: 18px;
+}
+
+.optionInput {
+  margin: 5px 0;
+  padding: 6px;
+  font-size: 18px;
+}
+
+
+.button {
+  padding: 6px;
+  margin: 5px 5px 0 0; 
+}

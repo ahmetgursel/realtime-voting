@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { NEW_QUESTION_MUTATION } from './queries';
+import styles from './styles.module.css';
 
 const initialOptions = [{ title: '' }, { title: '' }];
 
 function NewQuestion() {
-  const [addNewQuestion, { loading, data }] = useMutation(NEW_QUESTION_MUTATION);
+  const [addNewQuestion, { loading }] = useMutation(NEW_QUESTION_MUTATION);
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState(initialOptions);
 
@@ -32,6 +33,9 @@ function NewQuestion() {
         },
       },
     });
+
+    setOptions(initialOptions);
+    setTitle('');
   };
 
   return (
@@ -42,6 +46,7 @@ function NewQuestion() {
         value={title}
         onChange={({ target }) => setTitle(target.value)}
         disabled={loading}
+        className={styles.questionInput}
       />
 
       <h2>Options</h2>
@@ -53,15 +58,20 @@ function NewQuestion() {
             id={index}
             onChange={handleChangeOption}
             disabled={loading}
+            className={styles.optionInput}
           />
         </div>
       ))}
 
-      <button disabled={loading} onClick={() => setOptions([...options, { title: '' }])}>
+      <button
+        className={styles.button}
+        disabled={loading}
+        onClick={() => setOptions([...options, { title: '' }])}
+      >
         New Option
       </button>
 
-      <button disabled={loading} onClick={handleSaveBtn}>
+      <button className={styles.button} disabled={loading} onClick={handleSaveBtn}>
         Save
       </button>
     </div>
